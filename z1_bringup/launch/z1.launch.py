@@ -194,9 +194,24 @@ def launch_setup(context, *args, **kwargs):
         condition=IfCondition(sim_ignition),
     )
 
+    # Bridge for camera topics from Ignition to ROS2
+    ignition_camera_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/rgbd_camera/image@sensor_msgs/msg/Image@ignition.msgs.Image",
+            "/rgbd_camera/depth_image@sensor_msgs/msg/Image@ignition.msgs.Image",
+            "/rgbd_camera/points@sensor_msgs/msg/PointCloud2@ignition.msgs.PointCloudPacked",
+            "/rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo",
+        ],
+        condition=IfCondition(sim_ignition),
+        output="screen",
+    )
+
     nodes_to_start += [
         ignition_simulator_node,
         ignition_spawn_z1_node,
+        ignition_camera_bridge,
     ]
     return nodes_to_start
 
