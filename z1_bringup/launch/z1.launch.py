@@ -208,10 +208,21 @@ def launch_setup(context, *args, **kwargs):
         output="screen",
     )
 
+    # Depth image filter to handle Inf values
+    depth_filter_script = os.path.join(
+        get_package_share_path("z1_bringup"), "scripts", "depth_image_filter.py"
+    )
+    depth_image_filter_node = ExecuteProcess(
+        cmd=["python3", depth_filter_script],
+        condition=IfCondition(sim_ignition),
+        output="screen",
+    )
+
     nodes_to_start += [
         ignition_simulator_node,
         ignition_spawn_z1_node,
         ignition_camera_bridge,
+        depth_image_filter_node,
     ]
     return nodes_to_start
 
