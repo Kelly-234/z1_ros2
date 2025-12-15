@@ -44,6 +44,8 @@ def launch_setup(context, *args, **kwargs):
     rviz = LaunchConfiguration("rviz").perform(context)
     rviz_config = LaunchConfiguration("rviz_config").perform(context)
     starting_controller = LaunchConfiguration("starting_controller").perform(context)
+    controller_config = LaunchConfiguration("controller_config").perform(context)
+    with_gripper = LaunchConfiguration("with_gripper").perform(context)
 
     bringup_file = os.path.join(
         get_package_share_path("z1_bringup"), "launch", "z1.launch.py"
@@ -54,6 +56,8 @@ def launch_setup(context, *args, **kwargs):
             "sim_ignition": sim_ignition,
             "rviz": "false",
             "starting_controller": starting_controller,
+            "controller_config": controller_config,
+            "with_gripper": with_gripper,
         }.items(),
     )
 
