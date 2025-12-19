@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>thermal_camera_node</name>
+  <version>0.0.1</version>
+  <description>集成和发布热成像摄像头数据的ROS包</description>
+  <maintainer email="user@example.com">user</maintainer>
+  <license>MIT</license>
+  
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

@@ -1,0 +1,9 @@
+rclpy
+sensor_msgs
+std_msgs
+numpy
+opencv-python
+pyserial
+crcmod
+# matplotlib removed - causes compatibility issues with NumPy 2.x
+# cmapy removed - depends on matplotlib, using OpenCV colormaps instead

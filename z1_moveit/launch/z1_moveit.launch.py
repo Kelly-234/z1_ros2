@@ -107,7 +107,7 @@ def generate_launch_description():
 
     declared_arguments.append(
         DeclareLaunchArgument(
-            "with_gripper", default_value="true", description="Use the gripper?"
+            "with_gripper", default_value="false", description="Use the gripper?"
         )
     )
 
